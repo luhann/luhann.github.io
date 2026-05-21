@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Blog | {{ config.title }}{% endblock title %}
+{% block description %}{{ section.description | default(value=config.description) }}{% endblock description %}
+
+{% block content %}
+<section class="blog-shell">
+    <header class="blog-hero">
+        <h1 class="eyebrow">Field Notes</h1>
+        <p>{{ section.description }}</p>
+    </header>
+
+    <div class="blog-archive">
+        {% for page in paginator.pages %}
+        <article class="blog-card">
+            <p class="post-meta">{{ page.date | date(format="%d %b %Y") }}</p>
+            <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+            {% if page.description %}
+            <p class="post-excerpt">{{ page.description }}</p>
+            {% endif %}
+            {% if page.taxonomies.tags %}
+            <p class="tag-row">
+                {% for tag in page.taxonomies.tags %}
+                <span>{{ tag }}</span>
+                {% endfor %}
+            </p>
+            {% endif %}
+        </article>
+        {% endfor %}
+    </div>
+
+    {% if paginator.number_pagers > 1 %}
+    <nav class="pager" aria-label="Pagination">
+        {% if paginator.previous %}<a href="{{ paginator.previous }}">Newer</a>{% endif %}
+        <span>Page {{ paginator.current_index }} / {{ paginator.number_pagers }}</span>
+        {% if paginator.next %}<a href="{{ paginator.next }}">Older</a>{% endif %}
+    </nav>
+    {% endif %}
+</section>
+{% endblock content %}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+    <script>
+        (function() {
+            const key = "theme_pref_v2";
+            const saved = localStorage.getItem(key);
+            const theme = saved === "light" || saved === "dark" ? saved : "dark";
+            document.documentElement.setAttribute("data-theme", theme);
+        })();
+    </script>
+    <link rel="alternate" type="application/atom+xml" title="{{ config.title }} Atom Feed" href="/atom.xml">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="page-{{ current_path | default(value='home') | trim_end_matches(pat='/') | replace(from='/', to='-') }}">
+    <header class="site-header">
+        <a class="site-title" href="/">Luke Hannan</a>
+        <nav class="site-nav" aria-label="Primary">
+            <a href="/">Home</a>
+            <a href="/posts/">Writing</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">
+                <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0 2a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm0-17a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm10 9a1 1 0 0 1 0 2h-2a1 1 0 1 1 0-2h2zM4 11a1 1 0 1 1 0 2H2a1 1 0 1 1 0-2h2zm13.657 6.243 1.414 1.414a1 1 0 0 1-1.414 1.414l-1.414-1.414a1 1 0 1 1 1.414-1.414zm-11.314 0a1 1 0 0 1 1.414 1.414L6.343 20.07a1 1 0 1 1-1.414-1.414l1.414-1.414zm11.314-10.486a1 1 0 0 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 1.414l-1.414 1.414zM6.343 6.757 4.93 5.343a1 1 0 0 1 1.414-1.414l1.414 1.414a1 1 0 1 1-1.414 1.414z" />
+                </svg>
+                <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.742 13.045A8.088 8.088 0 0 1 10.955 3.26a1 1 0 0 0-1.21-1.21A10.09 10.09 0 1 0 21.95 14.255a1 1 0 0 0-1.208-1.21z" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="site-main">
+        {% block content %}{% endblock content %}
+    </main>
+    <script>
+        (function() {
+            const key = "theme_pref_v2";
+            const root = document.documentElement;
+            const btn = document.getElementById("theme-toggle");
+            if (!btn) return;
+
+            const updateLabel = () => {
+                const theme = root.getAttribute("data-theme") || "dark";
+                btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+            };
+
+            btn.addEventListener("click", function() {
+                const current = root.getAttribute("data-theme") || "dark";
+                const next = current === "dark" ? "light" : "dark";
+                root.setAttribute("data-theme", next);
+                localStorage.setItem(key, next);
+                updateLabel();
+            });
+
+            updateLabel();
+        })();
+    </script>
+</body>
+</html>

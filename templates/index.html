@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Luke Hannan{% endblock title %}
+{% block description %}Luke Hannan - Biostatistician at UCT specializing in clinical trials, microbiome data analysis, and Bayesian statistics{% endblock description %}
+
+{% block content %}
+<div class="grid-2">
+    <section class="section-1">
+        <p class="eyebrow">Profile</p>
+        <h2>Elsewhere</h2>
+        <p>Cape Town, South Africa</p>
+        <p class="sidebar-copy">Biostatistics, multiomics, and reproducible workflows.</p>
+        <p class="home-links">
+            <a href="https://bsky.app/profile/luhann.com" aria-label="Bluesky" title="Bluesky">
+                <svg class="social-icon" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M3.468 5.367C5.303 6.796 7.276 9.695 8 11.192c.724-1.497 2.697-4.396 4.532-5.825C13.855 4.337 16 .331 16 2.769c0 .487-.279 4.09-.443 4.675-.57 2.034-2.646 2.554-4.493 2.24 3.228.548 4.05 2.364 2.277 4.18-3.367 3.447-4.838-.865-5.215-1.97-.069-.202-.101-.296-.126-.296-.024 0-.057.094-.125.296-.377 1.105-1.848 5.417-5.215 1.97-1.774-1.816-.951-3.632 2.277-4.18-1.846.314-3.922-.206-4.493-2.24C.279 6.86 0 3.256 0 2.77 0 .33 2.145 4.337 3.468 5.367z" />
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/luke-hannan-13bb19b5/" aria-label="LinkedIn" title="LinkedIn">
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.45 20.45H16.9v-5.57c0-1.33-.03-3.04-1.85-3.04s-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.92-2.06 2.06-2.06s2.06.92 2.06 2.06c0 1.14-.92 2.07-2.06 2.07zM7.12 20.45H3.55V9h3.57v11.45z" />
+                </svg>
+            </a>
+            <a href="https://github.com/luhann" aria-label="GitHub" title="GitHub">
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.38-1.33-1.75-1.33-1.75-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.33 3.3 1.23a11.46 11.46 0 0 1 6.01 0c2.29-1.56 3.3-1.23 3.3-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.83 1.1.83 2.22v3.29c0 .32.19.69.8.57A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+            </a>
+        </p>
+    </section>
+
+    <section class="section-2">
+        <p class="eyebrow">Biostatistician</p>
+        <h1 class="home-title">Hi, I'm Luke.</h1>
+        <p class="home-lede">I work on clinical trials and longitudinal microbiome methods, with a focus on practical, reproducible analysis.</p>
+
+        <h2>About</h2>
+        <p>I am a Biostatistician in the Division of Epidemiology and Biostatistics, UCT. My current research interests include reproducible research, analysis of clinical trials, and computational and statistical methods for the analysis of recurrent events and compositional data.</p>
+
+        <p>My PhD looked at developing novel methods for the analysis of longitudinal microbiome sequencing data. These days I spend most of my free time trying to make data science as fast as possible by integrating Rust and R.</p>
+        <p>I am proficient in the usual data science tech stack: <mark>R, python, git, SQL, AWS</mark>. I also have extensive
+          experience in the statistical analysis of longitudinal data and clinical trial data.</p>
+
+        <p><small>I am also a fan of simple, small, quick to load personal websites.</small></p>
+
+        {% set blog = get_section(path="posts/_index.md") %}
+        {% if blog.pages | length > 0 %}
+        <section class="recent-posts">
+            <h2>Recent Posts</h2>
+            <ul class="post-list">
+                {% for post in blog.pages %}
+                {% if loop.index <= 3 %}
+                <li>
+                    <a href="{{ post.permalink }}">{{ post.title }}</a>
+                    <span>{{ post.date | date(format="%d %b %Y") }}</span>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <a class="all-posts-link" href="/posts/">View all posts</a>
+        </section>
+        {% endif %}
+    </section>
+</div>
+{% endblock content %}

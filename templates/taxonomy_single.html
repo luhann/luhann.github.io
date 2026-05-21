@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ term.name }} | {{ config.title }}{% endblock title %}
+
+{% block content %}
+<section class="blog-shell">
+    <header class="blog-hero">
+        <p class="eyebrow">Tag</p>
+        <h1>{{ term.name }}</h1>
+        <p>{{ term.pages | length }} post{% if term.pages | length != 1 %}s{% endif %}</p>
+    </header>
+
+    <div class="blog-archive">
+        {% for page in term.pages %}
+        <article class="blog-card">
+            <p class="post-meta">{{ page.date | date(format="%d %b %Y") }}</p>
+            <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+            {% if page.description %}
+            <p class="post-excerpt">{{ page.description }}</p>
+            {% endif %}
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}
