@@ -131,47 +131,179 @@ a {
   text-decoration: none;
 }
 
-
-.site-header {
-  align-items: center;
-  backdrop-filter: blur(8px);
-  background: color-mix(in oklab, var(--surface) 92%, transparent);
-  border-bottom: 1px solid var(--line);
+// Layout with persistent left sidebar
+.layout-with-sidebar {
   display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 980px;
-  padding: 1rem 1.5rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  min-height: 100vh;
+}
 
-  .site-title {
-    font-size: 1.35rem;
-    font-weight: 600;
-    letter-spacing: 0.015em;
+.sidebar {
+  width: 160px;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem 0.75rem 1.5rem 0.75rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+  gap: 1.5rem;
+  font-size: 0.92rem;
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: $font-serif;
+  margin-bottom: 1.5rem;
+
+  a {
+    color: var(--headline);
+    text-decoration: none;
+  }
+}
+
+.sidebar-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: $font-serif;
+  margin-bottom: 1.5rem;
+
+  a {
+    color: var(--headline);
+    text-decoration: none;
+    font-size: 1.1rem;
   }
 
-  .site-nav {
-    align-items: center;
-    display: flex;
-    gap: 1rem;
+  .theme-toggle {
+    margin-left: 0.2rem;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+  }
+}
 
-    a {
-      color: var(--muted);
-      font-family: $font-sans;
-      font-size: 0.82rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-variant-numeric: lining-nums tabular-nums;
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
 
-      &:hover,
-      &:focus-visible {
-        color: var(--headline);
-      }
+  a {
+    color: var(--muted);
+    font-family: $font-sans;
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--accent);
     }
   }
+}
+
+.sidebar-social {
+  font-family: $font-mono;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  margin-top: auto;
+}
+
+.sidebar .theme-toggle {
+  margin-top: 0rem;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.site-main {
+  margin-left: 160px;
+  max-width: 980px;
+  padding: 2.5rem 2rem 3.2rem;
+  width: 100%;
+}
+
+// Sidebar Social Block Styles
+.sidebar-social-block {
+  align-self: center;
+  margin-top: 1rem;
+  background: var(--surface-soft);
+  padding: 0.4rem 0 0.4rem 0.4rem;
+  width: calc(100%);
+
+}
+
+hr.sidebar-social-block {
+  align-self: center;
+  height: 1px;
+  border: none;
+  background-color: rgba(127, 134, 141, 0.4);
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+  width: calc(95%);
+}
+
+.sidebar-social-heading {
+  font-family: $font-sans;
+  font-size: 0.85rem;
+  font-weight: 100;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(var(--muted), 0.2);
+  margin-bottom: 0.1rem;
+  margin-top: 0;
+  padding-bottom: 0.2rem;
+}
+
+.sidebar-social-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sidebar-social-item {
+  font-size: 0.35rem;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.sidebar-social-item a {
+  color: inherit;
+  font-size: 0.85rem;
+  font-variant: small-caps;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sidebar-social-item:hover,
+.sidebar-social-item:focus-within {
+  color: var(--accent);
+}
+
+.sidebar-social-icon {
+  width: 1.1em;
+  height: 1.1em;
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
 }
 
 
@@ -191,7 +323,7 @@ a {
 
   &:hover,
   &:focus-visible {
-    border-color: var(--accent-cool);
+    border-color: var(--accentl);
     color: var(--headline);
   }
 }
@@ -318,7 +450,7 @@ html[data-theme="light"] {
 
 .section-2 p,
 .section-2 li {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.68;
   margin: 0;
   padding-bottom: 10px;
@@ -407,7 +539,7 @@ html[data-theme="light"] mark {
 .blog-card h2 a:hover {
   color: var(--headline);
   text-decoration: underline;
-  text-decoration-color: var(--accent-cool);
+  text-decoration-color: var(--accent-alizarin);
   text-underline-offset: 3px;
 }
 
@@ -484,7 +616,7 @@ html[data-theme="light"] mark {
 }
 
 .prose {
-  font-size: 1.17rem;
+  font-size: 1rem;
   hanging-punctuation: first last;
   line-height: 1.82;
   margin-top: 1.4rem;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <meta charset="UTF-8">
@@ -7,7 +8,7 @@
     <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
     <link rel="canonical" href="https://luhann.com" />
     <script>
-        (function() {
+        (function () {
             const key = "theme_pref_v2";
             const saved = localStorage.getItem(key);
             const theme = saved === "light" || saved === "dark" ? saved : "dark";
@@ -17,28 +18,58 @@
     <link rel="alternate" type="application/atom+xml" title="{{ config.title }} Atom Feed" href="/atom.xml">
     <link rel="stylesheet" href="/style.css">
 </head>
-<body class="page-{{ current_path | default(value='home') | trim_end_matches(pat='/') | replace(from='/', to='-') }}">
-    <header class="site-header">
-        <a class="site-title" href="/">Luke Hannan</a>
-        <nav class="site-nav" aria-label="Primary">
-            <a href="/">Home</a>
-            <a href="{{ get_url(path="/posts/") }}">Writing</a>
-            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">
-                <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0 2a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm0-17a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm10 9a1 1 0 0 1 0 2h-2a1 1 0 1 1 0-2h2zM4 11a1 1 0 1 1 0 2H2a1 1 0 1 1 0-2h2zm13.657 6.243 1.414 1.414a1 1 0 0 1-1.414 1.414l-1.414-1.414a1 1 0 1 1 1.414-1.414zm-11.314 0a1 1 0 0 1 1.414 1.414L6.343 20.07a1 1 0 1 1-1.414-1.414l1.414-1.414zm11.314-10.486a1 1 0 0 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 1.414l-1.414 1.414zM6.343 6.757 4.93 5.343a1 1 0 0 1 1.414-1.414l1.414 1.414a1 1 0 1 1-1.414 1.414z" />
-                </svg>
-                <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M20.742 13.045A8.088 8.088 0 0 1 10.955 3.26a1 1 0 0 0-1.21-1.21A10.09 10.09 0 1 0 21.95 14.255a1 1 0 0 0-1.208-1.21z" />
-                </svg>
-            </button>
-        </nav>
-    </header>
 
-    <main class="site-main">
-        {% block content %}{% endblock content %}
-    </main>
+<body class="page-{{ current_path | default(value='home') | trim_end_matches(pat='/') | replace(from='/', to='-') }}">
+    <div class="layout-with-sidebar">
+        <aside class="sidebar" aria-label="Sidebar Navigation">
+            <div class="sidebar-title">
+                <a href="/">Luke Hannan</a>
+                <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">
+                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0 2a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm0-17a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm10 9a1 1 0 0 1 0 2h-2a1 1 0 1 1 0-2h2zM4 11a1 1 0 1 1 0 2H2a1 1 0 1 1 0-2h2zm13.657 6.243 1.414 1.414a1 1 0 0 1-1.414 1.414l-1.414-1.414a1 1 0 1 1 1.414-1.414zm-11.314 0a1 1 0 0 1 1.414 1.414L6.343 20.07a1 1 0 1 1-1.414-1.414l1.414-1.414zm11.314-10.486a1 1 0 0 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 1.414l-1.414 1.414zM6.343 6.757 4.93 5.343a1 1 0 0 1 1.414-1.414l1.414 1.414a1 1 0 1 1-1.414 1.414z" />
+                    </svg>
+                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M20.742 13.045A8.088 8.088 0 0 1 10.955 3.26a1 1 0 0 0-1.21-1.21A10.09 10.09 0 1 0 21.95 14.255a1 1 0 0 0-1.208-1.21z" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/">Home</a>
+                <a href="{{ get_url(path="/posts/") }}">Writing</a>
+            </nav>
+            <div class="sidebar-social-block">
+                <h2 class="sidebar-social-heading">Socials</h2>
+                <hr class="sidebar-social-block">
+                <ul class="sidebar-social-list">
+                    <li class="sidebar-social-item">
+                        {% set href = "https://github.com/luhann" %}
+                        {% include "shortcodes/icon_github.html" %}
+                        <a href="https://github.com/luhann" target="_blank" rel="noopener noreferrer"> GitHub</a>
+                    </li>
+                    <li class="sidebar-social-item">
+                        {% set href = "https://bsky.app/profile/luhann.com" %}
+                        {% include "shortcodes/icon_bluesky.html" %}
+                        <a href="https://bsky.app/profile/luhann.com" target="_blank" rel="noopener noreferrer">
+                            Bluesky</a>
+                    <li class="sidebar-social-item">
+                        {% set href = "https://www.linkedin.com/in/luke-hannan-13bb19b5/" %}
+                        {% include "shortcodes/icon_linkedin.html" %}
+                        <a href="https://www.linkedin.com/in/luke-hannan-13bb19b5/" target="_blank"
+                            rel="noopener noreferrer">
+                            LinkedIn</a>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <main class="site-main">
+            {% block content %}{% endblock content %}
+        </main>
+    </div>
     <script>
-        (function() {
+        (function () {
             const key = "theme_pref_v2";
             const root = document.documentElement;
             const btn = document.getElementById("theme-toggle");
@@ -49,7 +80,7 @@
                 btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
             };
 
-            btn.addEventListener("click", function() {
+            btn.addEventListener("click", function () {
                 const current = root.getAttribute("data-theme") || "dark";
                 const next = current === "dark" ? "light" : "dark";
                 root.setAttribute("data-theme", next);
@@ -61,4 +92,5 @@
         })();
     </script>
 </body>
+
 </html>
