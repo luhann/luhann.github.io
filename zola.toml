@@ -1,5 +1,6 @@
-base_url = "/"
+base_url = "https://luhann.com/"
 title = "Luke Hannan"
+author = "Luke Hannan"
 description = "Biostatistics notes on clinical trials, microbiome analysis, and reproducible research"
 default_language = "en"
 minify_html = true
@@ -12,6 +13,5 @@ generate_robots_txt = true
 
 taxonomies = [{ name = "tags", feed = true }]
 
-[extra]
-author = "Luke Hannan"
-location = "Cape Town, South Africa"
+[markdown]
+smart_punctuation = true
