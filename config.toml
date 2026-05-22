@@ -2,16 +2,15 @@ base_url = "/"
 title = "Luke Hannan"
 description = "Biostatistics notes on clinical trials, microbiome analysis, and reproducible research"
 default_language = "en"
+minify_html = true
 compile_sass = true
 build_search_index = true
 generate_feeds = true
 feed_filenames = ["atom.xml"]
+generate_sitemap = true
+generate_robots_txt = true
 
-minify_html = true
-
-taxonomies = [
-  { name = "tags", feed = true }
-]
+taxonomies = [{ name = "tags", feed = true }]
 
 [extra]
 author = "Luke Hannan"
