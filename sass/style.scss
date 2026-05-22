@@ -4,7 +4,8 @@ $font-sans: "IBM Plex Sans", Arial, sans-serif;
 $font-mono: "IBM Plex Mono", "Courier New", monospace;
 $max-width: 720px;
 
-$transition-style: background-color 0.4s ease, color 0.4s ease;
+$transition-time: 0.4s;
+$transition-style: background-color $transition-time ease, color $transition-time ease;
 $headline: #f2efe9;
 $text: #a4abb2;
 $accent: #cf7d55;
@@ -205,7 +206,7 @@ mark {
     letter-spacing: 0.14em;
     word-spacing: 0.1em;
     text-transform: uppercase;
-    transition: color 0.2s;
+    transition: color $transition-time;
 
     &:hover,
     &:focus-visible {
@@ -274,13 +275,13 @@ hr.sidebar-social-block {
   align-items: center;
   gap: 0.5rem;
   color: var(--site-muted);
-  transition: color 0.2s;
+  transition: color $transition-time;
 
   a {
     color: inherit;
     font-size: 0.85rem;
     font-variant: small-caps;
-    transition: color 0.2s;
+    transition: color $transition-time;
   }
 
   &:hover,
@@ -403,7 +404,7 @@ hr.sidebar-social-block {
     display: inline-flex;
     height: 2rem;
     justify-content: center;
-    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    transition: $transition-style;
     width: 2rem;
 
     &:hover {
@@ -467,7 +468,7 @@ hr.sidebar-social-block {
 
   &:hover {
     border-bottom-color: #3b4653;
-    transition: border-bottom-color 0.2s ease;
+    transition: border-bottom-color $transition-time ease;
   }
 
   h2 {
