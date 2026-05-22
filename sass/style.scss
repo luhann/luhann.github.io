@@ -2,7 +2,7 @@
 $font-serif: "EB Garamond", Georgia, serif;
 $font-sans: "IBM Plex Sans", Arial, sans-serif;
 $font-mono: "IBM Plex Mono", "Courier New", monospace;
-$max-width: 560px;
+$max-width: 720px;
 $headline: #f2efe9;
 $text: #a4abb2;
 $accent: #cf7d55;
@@ -16,7 +16,7 @@ $bg: #000000;
 
 @font-face {
   font-family: "EB Garamond";
-  src: url("/fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
+  src: url("/fonts/EBGaramond-VariableFont_wght.woff2") format("woff2");
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@ $bg: #000000;
 
 @font-face {
   font-family: "IBM Plex Sans";
-  src: url("/fonts/IBMPlexSans-VariableFont_wdth,wght.ttf") format("truetype");
+  src: url("/fonts/IBMPlexSans-VariableFont_wdth,wght.woff2") format("woff2");
   font-weight: 400 600;
   font-style: normal;
   font-display: swap;
@@ -32,7 +32,7 @@ $bg: #000000;
 
 @font-face {
   font-family: "IBM Plex Mono";
-  src: url("/fonts/IBMPlexMono-Regular.ttf") format("truetype");
+  src: url("/fonts/IBMPlexMono-Regular.woff2") format("woff2");
   font-weight: 400 500;
   font-style: normal;
   font-display: swap;
@@ -123,7 +123,6 @@ a {
 // Layout with persistent left sidebar
 .layout-with-sidebar {
   display: flex;
-  min-height: 100vh;
 
   @media (min-width: #{$max-width + 1px}) {
     padding-left: 140px;
@@ -372,7 +371,7 @@ html[data-theme="light"] {
   max-width: $max-width;
 
   @media (min-width: 961px) {
-    width: 60%;
+    width: 80%;
 
   }
 }
@@ -452,7 +451,6 @@ html[data-theme="light"] mark {
 
 .blog-shell {
   margin: 1rem auto 0 auto;
-  max-width: $max-width;
 }
 
 .blog-hero {
