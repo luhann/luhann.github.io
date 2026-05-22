@@ -20,6 +20,13 @@
 </head>
 
 <body class="page-{{ current_path | default(value='home') | trim_end_matches(pat='/') | replace(from='/', to='-') }}">
+    <button class="sidebar-hamburger" id="sidebar-hamburger" aria-label="Open menu" type="button">
+        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+            viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"></path>
+        </svg>
+    </button>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
     <div class="layout-with-sidebar">
         <aside class="sidebar" aria-label="Sidebar Navigation">
             <div class="sidebar-title">
@@ -70,25 +77,43 @@
     </div>
     <script>
         (function () {
+            // Theme toggle
             const key = "theme_pref_v2";
             const root = document.documentElement;
             const btn = document.getElementById("theme-toggle");
-            if (!btn) return;
-
-            const updateLabel = () => {
-                const theme = root.getAttribute("data-theme") || "dark";
-                btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
-            };
-
-            btn.addEventListener("click", function () {
-                const current = root.getAttribute("data-theme") || "dark";
-                const next = current === "dark" ? "light" : "dark";
-                root.setAttribute("data-theme", next);
-                localStorage.setItem(key, next);
+            if (btn) {
+                const updateLabel = () => {
+                    const theme = root.getAttribute("data-theme") || "dark";
+                    btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+                };
+                btn.addEventListener("click", function () {
+                    const current = root.getAttribute("data-theme") || "dark";
+                    const next = current === "dark" ? "light" : "dark";
+                    root.setAttribute("data-theme", next);
+                    localStorage.setItem(key, next);
+                    updateLabel();
+                });
                 updateLabel();
-            });
+            }
 
-            updateLabel();
+            // Sidebar toggle for mobile
+            const sidebar = document.querySelector('.sidebar');
+            const hamburger = document.getElementById('sidebar-hamburger');
+            const overlay = document.getElementById('sidebar-overlay');
+            function openSidebar() {
+                sidebar.classList.add('sidebar-open');
+                overlay.classList.add('sidebar-overlay-active');
+                document.body.classList.add('sidebar-active');
+            }
+            function closeSidebar() {
+                sidebar.classList.remove('sidebar-open');
+                overlay.classList.remove('sidebar-overlay-active');
+                document.body.classList.remove('sidebar-active');
+            }
+            if (hamburger && sidebar && overlay) {
+                hamburger.addEventListener('click', openSidebar);
+                overlay.addEventListener('click', closeSidebar);
+            }
         })();
     </script>
 </body>
