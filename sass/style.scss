@@ -1,4 +1,3 @@
-
 // Sass variables for palette and fonts
 $font-serif: "EB Garamond", Georgia, serif;
 $font-sans: "IBM Plex Sans", Arial, sans-serif;
@@ -15,102 +14,106 @@ $surface-soft: #13171c;
 $bg: #000000;
 
 @font-face {
-    font-family: "EB Garamond";
-    src: url("/fonts/EBGaramond-VariableFont_wght.ttf") format("ttf");
-    font-weight: 400 700;
-    font-style: normal;
-    font-display: swap;
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-VariableFont_wght.ttf") format("ttf");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
-    font-family: "EB Garamond";
-    src: url("/fonts/EBGaramond-VariableFont_wght.ttf") format("ttf");
-    font-weight: 400 700;
-    font-style: italic;
-    font-display: swap;
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-VariableFont_wght.ttf") format("ttf");
+  font-weight: 400 700;
+  font-style: italic;
+  font-display: swap;
 }
+
 @font-face {
-    font-family: "IBM Plex Sans";
-    src: url("/fonts/IBMPlexSans-VariableFont_wght.ttf") format("ttf");
-    font-weight: 400 600;
-    font-style: normal;
-    font-display: swap;
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/IBMPlexSans-VariableFont_wght.ttf") format("ttf");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
-    font-family: "IBM Plex Mono";
-    src: url("/fonts/IBMPlexMono-Regular.ttf") format("ttf");
-    font-weight: 400 500;
-    font-style: normal;
-    font-display: swap;
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/IBMPlexMono-Regular.ttf") format("ttf");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 // CSS custom properties for theme switching, values from Sass variables
 :root {
-    --bg: #{$bg};
-    --surface: #{$surface};
-    --surface-soft: #{$surface-soft};
-    --text: #{$text};
-    --headline: #{$headline};
-    --accent: #{$accent};
-    --accent-cool: #{$accent-cool};
-    --accent-alizarin: #{$accent-alizarin};
-    --muted: #{$muted};
-    --line: #{$line};
+  --bg: #{$bg};
+  --surface: #{$surface};
+  --surface-soft: #{$surface-soft};
+  --text: #{$text};
+  --headline: #{$headline};
+  --accent: #{$accent};
+  --accent-cool: #{$accent-cool};
+  --accent-alizarin: #{$accent-alizarin};
+  --muted: #{$muted};
+  --line: #{$line};
 }
+
 html[data-theme="light"] {
-    --bg: #fff;
-    --surface: #fff;
-    --surface-soft: #eceff3;
-    --text: #2c3340;
-    --headline: #131822;
-    --accent: #bb6d4a;
-    --accent-cool: #2f6f9f;
-    --muted: #5a6270;
-    --line: #cfd6df;
+  --bg: #fff;
+  --surface: #fff;
+  --surface-soft: #eceff3;
+  --text: #2c3340;
+  --headline: #131822;
+  --accent: #bb6d4a;
+  --accent-cool: #2f6f9f;
+  --muted: #5a6270;
+  --line: #cfd6df;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    background-color: #000000 !important;
-    background-image: none !important;
-    min-height: 100%;
+  background-color: #000000 !important;
+  background-image: none !important;
+  min-height: 100%;
 }
 
 html[data-theme="light"] {
-    background-color: #ffffff !important;
+  background-color: #ffffff !important;
 }
 
 
 body {
-    margin: 0;
-    background-color: $bg !important;
-    background-image: none !important;
-    color: var(--text);
-    font-family: $font-serif;
-    font-feature-settings: "liga" 1, "clig" 1, "kern" 1;
-    font-variant-numeric: oldstyle-nums proportional-nums;
-    font-kerning: normal;
-    font-optical-sizing: auto;
-    line-height: 1.65;
-    min-height: 100vh;
-    position: relative;
-    text-rendering: optimizeLegibility;
+  margin: 0;
+  background-color: $bg !important;
+  background-image: none !important;
+  color: var(--text);
+  font-family: $font-serif;
+  font-feature-settings: "liga" 1, "clig" 1, "kern" 1;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-kerning: normal;
+  font-optical-sizing: auto;
+  line-height: 1.65;
+  min-height: 100vh;
+  position: relative;
+  text-rendering: optimizeLegibility;
 }
 
 html[data-theme="light"] body {
-    background-color: #ffffff !important;
+  background-color: #ffffff !important;
 }
 
 body::before {
-    background-image: none;
-    content: "";
-    inset: 0;
-    opacity: 0;
-    pointer-events: none;
-    position: fixed;
-    z-index: -1;
+  background-image: none;
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
 }
 
 
@@ -118,590 +121,604 @@ h1,
 h2,
 h3,
 .site-title {
-    color: var(--headline);
-    font-family: $font-serif, "Times New Roman", serif;
-    letter-spacing: 0.01em;
+  color: var(--headline);
+  font-family: $font-serif, "Times New Roman", serif;
+  letter-spacing: 0.01em;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 
 .site-header {
+  align-items: center;
+  backdrop-filter: blur(8px);
+  background: color-mix(in oklab, var(--surface) 92%, transparent);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  .site-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.015em;
+  }
+
+  .site-nav {
     align-items: center;
-    backdrop-filter: blur(8px);
-    background: color-mix(in oklab, var(--surface) 92%, transparent);
-    border-bottom: 1px solid var(--line);
     display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    max-width: 980px;
-    padding: 1rem 1.5rem;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    gap: 1rem;
 
-    .site-title {
-        font-size: 1.35rem;
-        font-weight: 600;
-        letter-spacing: 0.015em;
+    a {
+      color: var(--muted);
+      font-family: $font-sans;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-variant-numeric: lining-nums tabular-nums;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--headline);
+      }
     }
-
-    .site-nav {
-        align-items: center;
-        display: flex;
-        gap: 1rem;
-
-        a {
-            color: var(--muted);
-            font-family: $font-sans;
-            font-size: 0.82rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-variant-numeric: lining-nums tabular-nums;
-
-            &:hover,
-            &:focus-visible {
-                color: var(--headline);
-            }
-        }
-    }
+  }
 }
 
 
 .theme-toggle {
-    align-items: center;
-    background: var(--surface);
-      border: 1px solid var(--line);
-    border-radius: 999px;
-    color: var(--muted);
-    cursor: pointer;
-    display: inline-flex;
-    height: 2rem;
-    justify-content: center;
-    min-width: 2rem;
-    padding: 0;
-    font-variant-numeric: lining-nums tabular-nums;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  cursor: pointer;
+  display: inline-flex;
+  height: 2rem;
+  justify-content: center;
+  min-width: 2rem;
+  padding: 0;
+  font-variant-numeric: lining-nums tabular-nums;
 
-    &:hover,
-    &:focus-visible {
-        border-color: var(--accent-cool);
-          color: var(--headline);
-    }
+  &:hover,
+  &:focus-visible {
+    border-color: var(--accent-cool);
+    color: var(--headline);
+  }
 }
 
 
 .theme-icon {
-    fill: currentColor;
-    height: 0.9rem;
-    width: 0.9rem;
-    &-moon {
-        display: none;
-    }
+  fill: currentColor;
+  height: 0.9rem;
+  width: 0.9rem;
+
+  &-moon {
+    display: none;
+  }
 }
+
 html[data-theme="light"] {
-    .theme-icon-sun {
-        display: none;
-    }
-    .theme-icon-moon {
-        display: block;
-    }
+  .theme-icon-sun {
+    display: none;
+  }
+
+  .theme-icon-moon {
+    display: block;
+  }
 }
 
 
 .site-main {
-    margin: 0 auto;
-    max-width: 980px;
-    padding: 1.8rem 1.5rem 3.2rem;
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 1.8rem 1.5rem 3.2rem;
 }
 
 .grid-2 {
-    display: grid;
-    gap: 2.4rem;
-    grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.5fr);
+  display: grid;
+  gap: 2.4rem;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.5fr);
 }
 
 .section-1 {
-    padding-top: 6.8rem;
-    text-align: left;
+  padding-top: 6.8rem;
+  text-align: left;
 }
 
 .section-1 p {
-    font-size: 1.1rem;
-    margin: 0;
-    padding-bottom: 10px;
+  font-size: 1.1rem;
+  margin: 0;
+  padding-bottom: 10px;
 }
 
 .sidebar-copy {
-    color: var(--muted);
-    max-width: 20ch;
+  color: var(--muted);
+  max-width: 20ch;
 }
 
 .section-1 h2 {
-    font-size: 1.9rem;
-    margin-bottom: 10px;
+  font-size: 1.9rem;
+  margin-bottom: 10px;
 }
 
 .home-title {
-    font-size: 3.1rem;
-    line-height: 1.05;
-    margin: 0.15rem 0 0.7rem;
+  font-size: 3.1rem;
+  line-height: 1.05;
+  margin: 0.15rem 0 0.7rem;
 }
 
 .home-lede {
-    color: #c3c9cf;
-    font-size: 1.25rem;
-    line-height: 1.45;
-    max-width: 34ch;
+  color: #c3c9cf;
+  font-size: 1.25rem;
+  line-height: 1.45;
+  max-width: 34ch;
 }
 
 .home-blog-link {
-    color: var(--accent);
-    font-family: "IBM Plex Sans", Arial, sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  color: var(--accent);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .home-links {
-    display: flex;
-    gap: 0.8rem;
-    justify-content: flex-start;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: flex-start;
 }
 
 
 .home-links a {
-    align-items: center;
-    background: var(--surface);
-      border: 1px solid var(--line);
-    border-radius: 999px;
-    color: var(--muted);
-    display: inline-flex;
-    height: 2rem;
-    justify-content: center;
-    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    width: 2rem;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  display: inline-flex;
+  height: 2rem;
+  justify-content: center;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  width: 2rem;
 }
 
 
 .home-links a:hover {
-    border-color: var(--accent);
-    color: var(--headline);
-    transform: translateY(-1px);
+  border-color: var(--accent);
+  color: var(--headline);
+  transform: translateY(-1px);
 }
 
 .social-icon {
-    fill: currentColor;
-    height: 0.95rem;
-    width: 0.95rem;
+  fill: currentColor;
+  height: 0.95rem;
+  width: 0.95rem;
 }
 
 .section-2 {
-    padding-top: 2.2rem;
-    width: 100%;
+  padding-top: 2.2rem;
+  width: 100%;
 }
 
 .section-2 h2 {
-    font-size: 1.45rem;
-    margin: 2rem 0 0.55rem;
+  font-size: 1.45rem;
+  margin: 2rem 0 0.55rem;
 }
 
 .section-2 p,
 .section-2 li {
-    font-size: 1.1rem;
-    line-height: 1.68;
-    margin: 0;
-    padding-bottom: 10px;
+  font-size: 1.1rem;
+  line-height: 1.68;
+  margin: 0;
+  padding-bottom: 10px;
 }
 
 mark {
-    background-color: #ecebe8;
-    color: #2d3136;
+  background-color: #ecebe8;
+  color: #2d3136;
 }
 
 html[data-theme="light"] mark {
-    background-color: #dce4ef;
-    color: #182030;
+  background-color: #dce4ef;
+  color: #182030;
 }
 
 .icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-    margin: 0 5px;
-    vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  margin: 0 5px;
+  vertical-align: middle;
 }
 
 .blog-shell {
-    margin: 1rem auto 0;
-    max-width: 820px;
+  margin: 1rem auto 0;
+  max-width: 820px;
 }
 
 .blog-hero {
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 1.6rem;
-    padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.25rem;
 }
 
 .eyebrow {
-    color: var(--accent);
-    font-family: "IBM Plex Sans", Arial, sans-serif;
-    font-size: 0.76rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    margin: 0;
-    text-transform: uppercase;
-    font-variant-numeric: lining-nums tabular-nums;
+  color: var(--accent);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  margin: 0;
+  text-transform: uppercase;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .blog-hero h1 {
-    font-size: 3rem;
-    margin: 0.35rem 0;
+  font-size: 3rem;
+  margin: 0.35rem 0;
 }
 
 .blog-hero p {
-    font-size: 1.1rem;
-    max-width: 64ch;
-    margin: 0.2rem 0;
+  font-size: 1.1rem;
+  max-width: 64ch;
+  margin: 0.2rem 0;
 }
 
 .blog-archive {
-    display: grid;
-    gap: 0;
+  display: grid;
+  gap: 0;
 }
 
 .blog-card {
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid var(--line);
-    border-left: 0;
-    border-radius: 0;
-    opacity: 1;
-    padding: 1.15rem 0;
-    transform: none;
-    animation: none;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-left: 0;
+  border-radius: 0;
+  opacity: 1;
+  padding: 1.15rem 0;
+  transform: none;
+  animation: none;
 }
 
 .blog-card:hover {
-    border-bottom-color: #3b4653;
-    transition: border-bottom-color 0.2s ease;
+  border-bottom-color: #3b4653;
+  transition: border-bottom-color 0.2s ease;
 }
 
 .blog-card h2 {
-    font-size: 1.4rem;
-    margin: 0;
-    line-height: 1.2;
-    text-wrap: balance;
+  font-size: 1.4rem;
+  margin: 0;
+  line-height: 1.2;
+  text-wrap: balance;
 }
 
 .blog-card h2 a:hover {
-    color: var(--headline);
-    text-decoration: underline;
-    text-decoration-color: var(--accent-cool);
-    text-underline-offset: 3px;
+  color: var(--headline);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-cool);
+  text-underline-offset: 3px;
 }
 
 .post-meta {
-    color: var(--accent-alizarin);
-    font-family: "IBM Plex Sans", Arial, sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.04em;
-    margin: 0 0 0.4rem;
-    text-transform: uppercase;
-    font-variant-numeric: lining-nums tabular-nums;
+  color: var(--accent-alizarin);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.4rem;
+  text-transform: uppercase;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .post-excerpt {
-    margin: 0.65rem 0 0;
+  margin: 0.65rem 0 0;
 }
 
 .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-    margin: 0.8rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.8rem 0 0;
 }
 
-.tag-row span {
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    color: #9fa6ae;
-    font-family: "IBM Plex Sans", Arial, sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.04em;
-    padding: 0.15rem 0.6rem;
-    text-transform: uppercase;
-    font-variant-numeric: lining-nums tabular-nums;
+.tag-row span,
+.tag-link {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: #9fa6ae;
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.6rem;
+  text-transform: uppercase;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
 }
 
-.tag-pill {
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    color: var(--text);
-    font-family: "IBM Plex Sans", Arial, sans-serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    padding: 0.35rem 0.75rem;
-    text-transform: uppercase;
-    font-variant-numeric: lining-nums tabular-nums;
+.tag-pill,
+.tag-link {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.75rem;
+  text-transform: uppercase;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 
-.tag-pill:hover {
-    border-color: var(--accent-cool);
-      color: var(--headline);
+.tag-pill:hover,
+.tag-link:hover {
+  border-color: var(--accent);
+  color: var(--headline);
 }
 
 .blog-post {
-    margin: 1rem auto;
-    max-width: 72ch;
+  margin: 1rem auto;
+  max-width: 72ch;
 }
 
 .blog-post h1 {
-    font-size: clamp(2rem, 4.2vw, 2.7rem);
-    line-height: 1.08;
-    margin: 0.25rem 0 0.4rem;
-    text-wrap: balance;
+  font-size: clamp(2rem, 4.2vw, 2.7rem);
+  line-height: 1.08;
+  margin: 0.25rem 0 0.4rem;
+  text-wrap: balance;
 }
 
 .prose {
-    font-size: 1.17rem;
-    hanging-punctuation: first last;
-    line-height: 1.82;
-    margin-top: 1.4rem;
-    max-width: 68ch;
+  font-size: 1.17rem;
+  hanging-punctuation: first last;
+  line-height: 1.82;
+  margin-top: 1.4rem;
+  max-width: 68ch;
 }
 
 .prose p,
 .prose li {
-    hyphens: auto;
-    overflow-wrap: anywhere;
+  hyphens: auto;
+  overflow-wrap: anywhere;
 }
 
 .prose li::marker {
-    color: var(--accent);
+  color: var(--accent);
 }
 
 
 .prose li a {
-    color: var(--accent);
-    text-decoration-color: color-mix(in oklab, var(--accent) 55%, transparent);
+  color: var(--accent);
+  text-decoration-color: color-mix(in oklab, var(--accent) 55%, transparent);
 }
 
 
 .prose li a:hover,
 .prose li a:focus-visible {
-    color: color-mix(in oklab, var(--accent) 82%, white);
-    text-decoration-color: color-mix(in oklab, var(--accent) 78%, transparent);
+  color: color-mix(in oklab, var(--accent) 82%, white);
+  text-decoration-color: color-mix(in oklab, var(--accent) 78%, transparent);
 }
 
 .prose .post-social-links {
-    display: flex;
-    gap: 0.7rem;
-    margin: 0.6rem 0 0.2rem;
+  display: flex;
+  gap: 0.7rem;
+  margin: 0.6rem 0 0.2rem;
 }
 
 .prose .post-social-links a {
-    align-items: center;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    color: var(--muted);
-    display: inline-flex;
-    height: 2rem;
-    justify-content: center;
-    text-decoration: none;
-    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    width: 2rem;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  display: inline-flex;
+  height: 2rem;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  width: 2rem;
 }
 
 
 .prose .post-social-links a:hover,
 .prose .post-social-links a:focus-visible {
-    border-color: var(--accent);
-    color: var(--headline);
-    transform: translateY(-1px);
+  border-color: var(--accent);
+  color: var(--headline);
+  transform: translateY(-1px);
 }
 
 .prose .marginnote {
-    border-left: 1px solid var(--line);
-    clear: right;
-    color: var(--muted);
-    float: right;
-    font-family: "IBM Plex Sans", Arial, sans-serif;
-    font-size: 0.82rem;
-    line-height: 1.45;
-    margin: 0.35rem -17rem 0.8rem 1.1rem;
-    max-width: 15rem;
-    padding-left: 0.7rem;
+  border-left: 1px solid var(--line);
+  clear: right;
+  color: var(--muted);
+  float: right;
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 0.35rem -17rem 0.8rem 1.1rem;
+  max-width: 15rem;
+  padding-left: 0.7rem;
 }
 
 .prose .marginnote p {
-    margin: 0;
+  margin: 0;
 }
 
 .prose a {
-    color: var(--accent-cool);
-    text-decoration: underline;
-    text-decoration-color: rgba(79, 141, 191, 0.45);
-    text-decoration-thickness: 0.07em;
-    text-underline-offset: 2px;
+  color: var(--accent-cool);
+  text-decoration: underline;
+  text-decoration-color: rgba(79, 141, 191, 0.45);
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 2px;
 }
 
 .prose h2,
 .prose h3 {
-    margin-top: 1.7rem;
+  margin-top: 1.7rem;
 }
 
 .prose code,
 .prose pre {
-    background: #090c10;
-    border: 1px solid var(--line);
-    border-radius: 2px;
-    font-family: "IBM Plex Mono", "Courier New", monospace;
+  background: #090c10;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font-family: "IBM Plex Mono", "Courier New", monospace;
 }
 
 .prose blockquote {
-    border-left: 2px solid var(--accent-cool);
-    color: #c2c8cf;
-    margin: 1.25rem 0;
-    padding: 0.1rem 0 0.1rem 1rem;
+  border-left: 2px solid var(--accent-cool);
+  color: #c2c8cf;
+  margin: 1.25rem 0;
+  padding: 0.1rem 0 0.1rem 1rem;
 }
 
 .prose code {
-    padding: 0.1rem 0.35rem;
+  padding: 0.1rem 0.35rem;
 }
 
 .prose pre {
-    overflow-x: auto;
-    padding: 0.9rem;
+  overflow-x: auto;
+  padding: 0.9rem;
 }
 
 .post-nav {
-    border-top: 1px solid var(--line);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem 1.5rem;
-    justify-content: space-between;
-    margin-top: 2.1rem;
-    padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.5rem;
+  justify-content: space-between;
+  margin-top: 2.1rem;
+  padding-top: 1rem;
 }
 
 .recent-posts {
-    margin-top: 2.1rem;
+  margin-top: 2.1rem;
 }
 
 .post-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .post-list li {
-    align-items: baseline;
-    border-bottom: 1px solid var(--line);
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
-    padding: 0.6rem 0;
+  align-items: baseline;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 0.6rem 0;
 }
 
 .post-list a {
-    color: var(--headline);
-    font-size: 1.15rem;
+  color: var(--headline);
+  font-size: 1.15rem;
 }
 
 .post-list span {
-    color: var(--muted);
-    font-family: "IBM Plex Sans", Arial, sans-serif;
-    font-size: 0.73rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    font-variant-numeric: lining-nums tabular-nums;
+  color: var(--muted);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 0.73rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .all-posts-link {
-    color: var(--accent);
-    display: inline-block;
-    font-family: "IBM Plex Sans", Arial, sans-serif;
-    font-size: 0.82rem;
-    letter-spacing: 0.09em;
-    margin-top: 0.9rem;
-    text-transform: uppercase;
+  color: var(--accent);
+  display: inline-block;
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.09em;
+  margin-top: 0.9rem;
+  text-transform: uppercase;
 }
 
 .post-nav a {
-    color: var(--muted);
+  color: var(--muted);
 }
 
 .post-nav a:hover {
-    color: var(--headline);
+  color: var(--headline);
 }
 
 .pager {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .pager a {
-    color: var(--accent);
+  color: var(--accent);
 }
 
 @keyframes rise-in {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
 @media (max-width: 780px) {
-    .grid-2 {
-        grid-template-columns: 1fr;
-        gap: 1.1rem;
-    }
-    .section-1 {
-        padding-top: 1.2rem;
-    }
-    .section-2 {
-        padding-top: 1.7rem;
-        width: 100%;
-    }
-    .blog-hero h1 {
-        font-size: 2.2rem;
-    }
-    .blog-post h1 {
-        font-size: 2rem;
-    }
-    .home-title {
-        font-size: 2.25rem;
-    }
-    .post-list li {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 0.3rem;
-    }
-    .prose .marginnote {
-        border-left-width: 2px;
-        float: none;
-        margin: 0.7rem 0;
-        max-width: none;
-        padding-left: 0.75rem;
-    }
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .section-1 {
+    padding-top: 1.2rem;
+  }
+
+  .section-2 {
+    padding-top: 1.7rem;
+    width: 100%;
+  }
+
+  .blog-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .blog-post h1 {
+    font-size: 2rem;
+  }
+
+  .home-title {
+    font-size: 2.25rem;
+  }
+
+  .post-list li {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .prose .marginnote {
+    border-left-width: 2px;
+    float: none;
+    margin: 0.7rem 0;
+    max-width: none;
+    padding-left: 0.75rem;
+  }
 }
