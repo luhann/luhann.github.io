@@ -16,6 +16,7 @@ Some recent examples:
 and perhaps more controversially:
 - [GPL is holding R back](https://josiah.rs/posts/gpl-cost/)
 {% end %}
+
 These days I spend much of my time reading excellent blog posts about making data science and R faster (typically using Rust).
 I have learnt a great deal from those posts, not just about computer science, but also about the value of writing. Both
 for your readers and for yourself as well. Writing forces can sometimes be laborious, but it forces you to convert
