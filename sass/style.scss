@@ -3,6 +3,7 @@ $font-serif: "EB Garamond", Georgia, serif;
 $font-sans: "IBM Plex Sans", Arial, sans-serif;
 $font-mono: "IBM Plex Mono", "Courier New", monospace;
 $max-width: 720px;
+$min-width: 1350px;
 
 $transition-time: 0.4s;
 $transition-style: background-color $transition-time ease, color $transition-time ease;
@@ -16,6 +17,7 @@ $line: #1f242b;
 $surface: #0b0e12;
 $surface-soft: #13171c;
 $bg: #000000;
+$code-bg: #090c10;
 
 // Global Variables & Tokens
 :root {
@@ -27,8 +29,10 @@ $bg: #000000;
   --site-accent: #{$accent};
   --site-accent-cool: #{$accent-cool};
   --site-accent-alizarin: #{$accent-alizarin};
+  --site-accent-meta: #{$accent-alizarin};
   --site-muted: #{$muted};
   --site-line: #{$line};
+  --code-bg: #{$code-bg};
 }
 
 html[data-theme="light"] {
@@ -37,10 +41,12 @@ html[data-theme="light"] {
   --site-surface-soft: #eceff3;
   --site-text: #2c3340;
   --site-headline: #131822;
-  --site-accent: #bb6d4a;
+  --site-accent: #2f6f9f;
   --site-accent-cool: #2f6f9f;
+  --site-accent-meta: #2A565B;
   --site-muted: #5a6270;
   --site-line: #cfd6df;
+  --code-bg: #eceff3;
 
   .theme-icon-sun {
     display: none;
@@ -487,7 +493,7 @@ hr.sidebar-social-block {
 }
 
 .post-meta {
-  color: var(--site-accent-alizarin);
+  color: var(--site-accent-meta);
   font-family: $font-sans;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
@@ -495,6 +501,13 @@ hr.sidebar-social-block {
   margin: 0 0 0.4rem;
   text-transform: uppercase;
   font-variant-numeric: lining-nums tabular-nums;
+}
+
+.post-description {
+  color: var(--site-muted);
+  font-family: $font-sans;
+  font-size: 0.82rem;
+  font-style: italic;
 }
 
 .post-excerpt {
@@ -635,34 +648,81 @@ hr.sidebar-social-block {
   }
 
   .marginnote {
-    clear: right;
     color: var(--site-muted);
-    float: right;
     font-family: $font-sans;
     font-size: 0.82rem;
     line-height: 1.45;
-    max-width: 45%;
-    margin: 0.5rem 0 1rem 1.5rem;
-    border-left: 2px solid var(--site-line);
+    border-left: 1px solid var(--site-line);
     padding-left: 0.7rem;
+
+    // Mobile / Tablets: Show notes cleanly as blocks dropped naturally between lines
+    display: block;
+    max-width: 100%;
+    margin: 0.8rem 0 1.2rem 0;
 
     p {
       margin: 0;
     }
 
-    @media (min-width: 1150px) {
-      max-width: 15rem;
-      margin: 0.35rem -17rem 0.8rem 1.1rem;
-      border-left: 1px solid var(--site-line);
+    &.quote-note {
+      font-style: italic;
+      opacity: 0.9;
+
+      &::before {
+        content: "“";
+        font-family: $font-serif;
+        font-size: 1.2rem;
+        margin-right: 0.15rem;
+        color: var(--site-accent);
+      }
+      &::after {
+        content: "”";
+        font-family: $font-serif;
+        font-size: 1.2rem;
+        color: var(--site-accent);
+      }
+    }
+
+    // Large Desktop screens: Break out seamlessly into the gutter
+    @media (min-width: $min-width) {
+      display: inline-block;
+      position: relative; // This keeps it anchored strictly to its text insertion point
+      float: right;
+      clear: right;
+      width: 15rem;
+      // Pushes it exactly 17rem to the right of the current sentence path
+      margin: 0.2rem -17rem 0.5rem 1.5rem; 
+      text-align: left;
+
+      // The Left-Side Modifier
+      &.left {
+        float: left;
+        clear: left;
+        // Pushes the note 17rem to the left, pulling it into the left gutter
+        margin: 0.2rem 1.5rem 0.5rem -17rem; 
+        text-align: right;
+        border-left: none;
+        border-right: 1px solid var(--site-line);
+        padding-left: 0.2rem;
+        padding-right: 0.7rem;
+      }
     }
   }
 
+
   a {
-    color: var(--site-accent-cool);
-    text-decoration: underline;
-    text-decoration-color: rgba(79, 141, 191, 0.45);
-    text-decoration-thickness: 0.07em;
-    text-underline-offset: 2px;
+    background: var(--site-surface);
+    color: var(--site-accent);
+    text-decoration: none;
+    transition: $transition-style;
+    width: 2rem;
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--site-accent);
+      color: var(--site-headline);
+      transform: translateY(-1px);
+    }
   }
 
   h2,
@@ -672,10 +732,11 @@ hr.sidebar-social-block {
 
   code,
   pre {
-    background: #090c10;
-    border: 1px solid var(--site-line);
-    border-radius: 2px;
+    background: var(--code-bg);
     font-family: $font-mono;
+    font-size: 0.9rem;
+    white-space: pre-wrap;
+    word-break: break-all;
   }
 
   code {
@@ -683,15 +744,21 @@ hr.sidebar-social-block {
   }
 
   pre {
+    border: 1px solid var(--site-line);
+    border-radius: 5px;
     overflow-x: auto;
     padding: 0.9rem;
   }
 
   blockquote {
-    border-left: 2px solid var(--site-accent-cool);
+    border-left: 2px solid var(--site-accent);
     color: #c2c8cf;
     margin: 1.25rem 0;
     padding: 0.1rem 0 0.1rem 1rem;
+  }
+
+  .footnotes {
+    font-size: 0.88rem;
   }
 }
 
@@ -827,14 +894,6 @@ hr.sidebar-social-block {
     align-items: flex-start;
     flex-direction: column;
     gap: 0.3rem;
-  }
-
-  .prose .marginnote {
-    border-left-width: 2px;
-    float: none;
-    margin: 0.7rem 0;
-    max-width: none;
-    padding-left: 0.75rem;
   }
 }
 

@@ -8,6 +8,7 @@
     <header>
         <p class="eyebrow">Research Note</p>
         <h1>{{ page.title }}</h1>
+        <p class="post-description"> {{ page.description }}</p>
         <p class="post-meta">{{ page.date | date(format="%d %b %Y") }}</p>
         {% if page.taxonomies.tags %}
         <p class="tag-row">
@@ -23,11 +24,11 @@
     </div>
 
     <nav class="post-nav" aria-label="Post navigation">
-        {% if page.later %}
-        <a href="{{ page.later.permalink }}">Newer: {{ page.later.title }}</a>
+        {% if page.higher %}
+        <a href="{{ page.higher.permalink }}">Older: {{ page.higher.title }}</a>
         {% endif %}
-        {% if page.earlier %}
-        <a href="{{ page.earlier.permalink }}">Older: {{ page.earlier.title }}</a>
+        {% if page.lower %}
+        <a href="{{ page.lower.permalink }}">Newer: {{ page.lower.title }}</a>
         {% endif %}
     </nav>
 </article>

@@ -3,6 +3,7 @@ title = "Luke Hannan"
 author = "Luke Hannan"
 description = "Biostatistics notes on clinical trials, microbiome analysis, and reproducible research"
 default_language = "en"
+
 minify_html = true
 compile_sass = true
 build_search_index = true
@@ -11,7 +12,9 @@ feed_filenames = ["atom.xml"]
 generate_sitemap = true
 generate_robots_txt = true
 
+
 taxonomies = [{ name = "tags", feed = true }]
 
 [markdown]
 smart_punctuation = true
+bottom_footnotes = true
