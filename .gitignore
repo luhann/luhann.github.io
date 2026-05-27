@@ -1,4 +1,5 @@
 public/
+giallo*.css
 .zola-cache/
 .DS_Store
 BLOGGING.md

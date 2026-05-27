@@ -17,7 +17,7 @@ $line: #1f242b;
 $surface: #0b0e12;
 $surface-soft: #13171c;
 $bg: #000000;
-$code-bg: #090c10;
+$code-bg: #000000;
 
 // Global Variables & Tokens
 :root {
@@ -33,6 +33,23 @@ $code-bg: #090c10;
   --site-muted: #{$muted};
   --site-line: #{$line};
   --code-bg: #{$code-bg};
+
+  // Refined Syntax Highlighting (Dark)
+  --syn-text: #{$text};                     // Soft grey text
+  --syn-hl: #{$surface-soft};               // Subtle highlight
+  --syn-ln: #{$muted};                      // Muted line numbers
+  --syn-comment: rgba(127, 134, 141, 0.6);  // Faded $muted for comments
+  --syn-keyword: #{$accent-alizarin};       // Red for keywords (let, const, fn)
+  --syn-string: #{$accent-cool};            // Blue for strings
+  --syn-variable: #{$accent};               // Copper for variables/params
+  --syn-constant: #{$text};                 // Neutral for constants
+  --syn-entity: #{$accent};                 // Copper for functions/classes
+  --syn-invalid: #{$accent-alizarin};
+  
+  // Diff Backgrounds
+  --syn-del-bg: rgba(165, 28, 48, 0.15);    // Tinted Alizarin
+  --syn-ins-bg: rgba(79, 141, 191, 0.15);   // Tinted Cool Blue
+  --syn-chg-bg: rgba(207, 125, 85, 0.15);   // Tinted Copper
 }
 
 html[data-theme="light"] {
@@ -46,7 +63,24 @@ html[data-theme="light"] {
   --site-accent-meta: #2A565B;
   --site-muted: #5a6270;
   --site-line: #cfd6df;
-  --code-bg: #eceff3;
+  --code-bg: #FFFFFF;
+
+  // Refined Syntax Highlighting (Dark)
+  --syn-text: #{$text};                     // Soft grey text
+  --syn-hl: #{$surface-soft};               // Subtle highlight
+  --syn-ln: #{$muted};                      // Muted line numbers
+  --syn-comment: rgba(127, 134, 141, 0.6);  // Faded $muted for comments
+  --syn-keyword: #{$accent-alizarin};       // Red for keywords (let, const, fn)
+  --syn-string: #{$accent-cool};            // Blue for strings
+  --syn-variable: var(--site-accent-meta);  // Meta for variables/params
+  --syn-constant: #{$text};                 // Neutral for constants
+  --syn-entity: #{$accent};                 // Copper for functions/classes
+  --syn-invalid: #{$accent-alizarin};
+  
+  // Diff Backgrounds
+  --syn-del-bg: rgba(165, 28, 48, 0.15);    // Tinted Alizarin
+  --syn-ins-bg: rgba(79, 141, 191, 0.15);   // Tinted Cool Blue
+  --syn-chg-bg: rgba(207, 125, 85, 0.15);   // Tinted Copper
 
   .theme-icon-sun {
     display: none;
@@ -60,6 +94,11 @@ html[data-theme="light"] {
     background-color: #dce4ef;
     color: #182030;
   }
+
+  &::selection {
+  background-color: var(--site-accent-cool);
+}
+
 }
 
 // Global Element Resets
@@ -98,10 +137,6 @@ body {
 ::selection {
   background-color: var(--site-accent);
   color: #ffffff;
-}
-
-html[data-theme="light"] ::selection {
-  background-color: var(--site-accent-cool);
 }
 
 h1,
@@ -705,6 +740,10 @@ hr.sidebar-social-block {
         border-right: 1px solid var(--site-line);
         padding-left: 0.2rem;
         padding-right: 0.7rem;
+
+        p {
+          text-align: right;
+        }
       }
     }
   }
@@ -737,6 +776,7 @@ hr.sidebar-social-block {
     font-size: 0.9rem;
     white-space: pre-wrap;
     word-break: break-all;
+    transition: $transition-style;
   }
 
   code {
@@ -835,6 +875,35 @@ hr.sidebar-social-block {
   }
 }
 
+// Tufte-style responsive container for inline SVGs
+.tufte-plot-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  width: 100%; // Mobile default: stays bound to the text column
+
+  // When the screen is larger than 1150px, activate the Tufte margin pop
+  @media (min-width: 1150px) {
+    width: 150%;
+    max-width: 100vw;
+    margin-left: calc((100% - 150%) / 2);
+  }
+}
+
+.tufte-plot-item {
+  width: 100%;
+  height: auto;
+  text-align: center;
+
+  // Fluidly scales your inline SVGs now that hardcoded widths are removed
+  svg {
+    width: 100%;
+    height: auto;
+    display: block; // Prevents strange inline baseline spacing gaps
+  }
+}
+
 @keyframes rise-in {
   from {
     opacity: 0;
@@ -911,3 +980,45 @@ hr.sidebar-social-block {
   outline-offset: 2px;
   border-radius: 2%;
 }
+
+// ==========================================
+// Zola Giallo Syntax Highlighting
+// ==========================================
+
+.z-code {
+  color: var(--syn-text);
+  background-color: var(--code-bg);
+}
+
+.z-hl { background-color: var(--syn-hl); }
+.giallo-ln { color: var(--syn-ln); }
+
+// Token Colors
+.z-comment, .z-punctuation.z-definition.z-comment { color: var(--syn-comment); }
+.z-constant, .z-support, .z-meta.z-property-name, .z-meta.z-module-reference, .z-entity.z-name, .z-meta.z-output { color: var(--syn-constant); }
+.z-entity { color: var(--syn-entity); }
+.z-keyword, .z-storage { color: var(--syn-keyword); }
+.z-string, .z-punctuation.z-definition.z-string { color: var(--syn-string); }
+.z-variable, .z-markup.z-changed { color: var(--syn-variable); }
+.z-source.z-regexp, .z-string.z-regexp, .z-string.z-other.z-link, .z-constant.z-character.z-escape, .z-source.z-ruby.z-embedded { color: var(--syn-regexp); }
+.z-markup.z-quote, .z-entity.z-name.z-tag, .z-markup.z-inserted { color: var(--syn-inserted); }
+
+// Invalid and Warnings
+.z-invalid, .z-message.z-error, .z-markup.z-deleted, .z-brackethighlighter.z-unmatched { color: var(--syn-invalid); }
+.z-invalid { font-style: italic; }
+
+// Markup Formatting
+.z-markup.z-heading, .z-entity.z-name, .z-meta.z-separator, .z-meta.z-diff.z-range { font-weight: bold; }
+.z-markup.z-italic { font-style: italic; }
+.z-markup.z-underline, .z-string.z-other.z-link, .z-constant.z-other.z-reference.z-link { text-decoration: underline; }
+.z-markup.z-strikethrough { text-decoration: line-through; }
+
+// Brackets & Punctuation
+.z-brackethighlighter { color: var(--syn-bracket); }
+.z-variable.z-parameter.z-function, .z-storage.z-modifier, .z-storage.z-type.z-java, .z-markup.z-italic, .z-markup.z-bold { color: var(--syn-text); }
+
+// Diff Backgrounds
+.z-markup.z-deleted, .z-punctuation.z-definition.z-deleted, .z-meta.z-diff.z-header.z-from-file { background-color: var(--syn-del-bg); }
+.z-markup.z-inserted, .z-punctuation.z-definition.z-inserted, .z-meta.z-diff.z-header.z-to-file { background-color: var(--syn-ins-bg); }
+.z-markup.z-changed, .z-punctuation.z-definition.z-changed { background-color: var(--syn-chg-bg); }
+.z-carriage-return { background-color: var(--syn-keyword); font-style: italic; text-decoration: underline; }
