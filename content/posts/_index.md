@@ -4,7 +4,7 @@ description = "Research notes, methods, and thoughts in progress"
 sort_by = "date"
 template = "posts/list.html"
 page_template = "posts/page.html"
-paginate_by = 8
+paginate_by = 6
 insert_anchor_links = "none"
 +++
 
