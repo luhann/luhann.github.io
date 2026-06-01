@@ -6,7 +6,7 @@ description = "Why this blog exists and what I will write about."
 tags = ["meta", "writing"]
 +++
 
-{% marginnote() %}
+{% aside() %}
 Some recent examples:
 - [In Defense of YAML](https://opensource.posit.co/blog/2026-05-21_in-defense-of-yaml/)
 - [Writing Python like it's Rust](https://kobzol.github.io/rust/python/2023/05/20/writing-python-like-its-rust.html)
