@@ -633,6 +633,36 @@ hr.sidebar-social-block {
     }
   }
 
+    q {
+      font-style: italic;
+      color: var(--site-headline); // Slightly darker/framer than body text for emphasis
+
+      // Custom smart quotes using your serif font
+      quotes: "“" "”" "‘" "’";
+
+      &::before {
+        content: open-quote;
+        // Tiny right margin prevents the quote mark from colliding with uppercase letters
+        margin-right: 0.05em;
+        color: var(--site-accent); // Pops your copper/cool blue accent on the opening mark
+      }
+
+      &::after {
+        content: close-quote;
+        margin-left: 0.05em;
+        color: var(--site-accent);
+      }
+
+      // Handle nested quotes (e.g., <q>She said, <q>No way,</q> and left.</q>)
+      q {
+        color: var(--site-text); // Dropping back to text color for the inner layer
+
+        &::before,
+        &::after {
+          color: var(--site-muted); // Softens the internal accent so it's not distracting
+        }
+      }
+    }
   p,
   li {
     hyphens: auto;
@@ -959,6 +989,93 @@ hr.sidebar-social-block {
     width: 100%;
     height: auto;
     display: block; // Prevents strange inline baseline spacing gaps
+  }
+}
+
+.terminal-window {
+  background: var(--site-surface);
+  border: 1px solid var(--site-line);
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin: 2rem auto;
+  max-width: $max-width;
+  overflow: hidden;
+  width: 100%;
+  transition: $transition-style, box-shadow $transition-time ease;
+
+  // Adapt shadows for clean separation in light theme
+  html[data-theme="light"] & {
+    box-shadow: 0 8px 24px rgba(44, 51, 64, 0.08);
+  }
+
+  .terminal-header {
+    background: var(--site-surface-soft);
+    border-bottom: 1px solid var(--site-line);
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    transition: $transition-style;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 6px;
+      display: inline-block;
+      opacity: 0.75;
+
+      // Kept standard Unix colors, matching the tone of your UI
+      &.red { background: #ff5f56; }
+      &.yellow { background: #ffbd2e; }
+      &.green { background: #27c93f; }
+    }
+
+    .terminal-title {
+      color: var(--site-muted);
+      font-family: $font-mono;
+      font-size: 0.75rem;
+      margin-left: auto;
+      margin-right: auto;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  .terminal-body {
+    padding: 1.25rem;
+    color: var(--site-text);
+    font-family: $font-mono;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    transition: $transition-style;
+
+    pre {
+      margin: 0;
+      background: transparent;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      white-space: pre; // Prevents the tree strings from breaking weirdly on smaller viewports
+      word-break: normal;
+    }
+
+    // Semantic maps to your existing dynamic syntax engine tokens
+    .file-config {
+      color: var(--syn-keyword);
+      font-weight: bold;
+    }
+
+    .folder {
+      color: var(--syn-string);
+    }
+
+    .folder-highlight {
+      color: var(--syn-text);
+      font-weight: bold;
+      background: var(--syn-hl);
+      padding: 0.05rem 0.35rem;
+      border-radius: 3px;
+      display: inline-block;
+    }
   }
 }
 
