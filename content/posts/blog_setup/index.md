@@ -1,7 +1,7 @@
 +++
 title = "On Blogging"
 date = 2026-05-29
-description = "How I found a website and blog setup that works for me"
+description = "How I found a website and blog setup that works for me."
 [taxonomies]
 tags = ["meta", "writing"]
 +++

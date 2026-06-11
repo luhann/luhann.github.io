@@ -713,7 +713,7 @@ hr.sidebar-social-block {
     }
   }
 
-  .aside-note {
+  .aside {
     color: var(--site-muted);
     font-family: $font-sans;
     font-size: 0.82rem;
@@ -867,7 +867,7 @@ hr.sidebar-social-block {
     transition: $transition-style;
   }
 
-  code {
+  :not(pre) > code {
     padding: 0.1rem 0.35rem;
   }
 
