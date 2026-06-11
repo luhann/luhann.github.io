@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background -->
+  <rect width="32" height="32" rx="5" fill="#18181b"/>
+
+  <!-- Spokes: center (16,16) to each outer node -->
+  <line x1="16" y1="16" x2="25"   y2="16"   stroke="#cf7d55" stroke-width="1"   opacity="0.6"/>
+  <line x1="16" y1="16" x2="20.5" y2="8.2"  stroke="#cf7d55" stroke-width="1"   opacity="0.6"/>
+  <line x1="16" y1="16" x2="11.5" y2="8.2"  stroke="#cf7d55" stroke-width="1"   opacity="0.6"/>
+  <line x1="16" y1="16" x2="7"    y2="16"   stroke="#cf7d55" stroke-width="1"   opacity="0.6"/>
+  <line x1="16" y1="16" x2="11.5" y2="23.8" stroke="#cf7d55" stroke-width="1"   opacity="0.6"/>
+  <line x1="16" y1="16" x2="20.5" y2="23.8" stroke="#cf7d55" stroke-width="1"   opacity="0.6"/>
+
+  <!-- Outer hexagonal ring -->
+  <line x1="25"   y1="16"   x2="20.5" y2="8.2"  stroke="#cf7d55" stroke-width="0.8" opacity="0.35"/>
+  <line x1="20.5" y1="8.2"  x2="11.5" y2="8.2"  stroke="#cf7d55" stroke-width="0.8" opacity="0.35"/>
+  <line x1="11.5" y1="8.2"  x2="7"    y2="16"   stroke="#cf7d55" stroke-width="0.8" opacity="0.35"/>
+  <line x1="7"    y1="16"   x2="11.5" y2="23.8" stroke="#cf7d55" stroke-width="0.8" opacity="0.35"/>
+  <line x1="11.5" y1="23.8" x2="20.5" y2="23.8" stroke="#cf7d55" stroke-width="0.8" opacity="0.35"/>
+  <line x1="20.5" y1="23.8" x2="25"   y2="16"   stroke="#cf7d55" stroke-width="0.8" opacity="0.35"/>
+
+  <!-- Outer nodes (6) -->
+  <circle cx="25"   cy="16"   r="1.8" fill="#cf7d55"/>
+  <circle cx="20.5" cy="8.2"  r="1.8" fill="#cf7d55"/>
+  <circle cx="11.5" cy="8.2"  r="1.8" fill="#cf7d55"/>
+  <circle cx="7"    cy="16"   r="1.8" fill="#cf7d55"/>
+  <circle cx="11.5" cy="23.8" r="1.8" fill="#cf7d55"/>
+  <circle cx="20.5" cy="23.8" r="1.8" fill="#cf7d55"/>
+
+  <!-- Central hub node -->
+  <circle cx="16" cy="16" r="2.6" fill="#e8a882"/>
+</svg>
